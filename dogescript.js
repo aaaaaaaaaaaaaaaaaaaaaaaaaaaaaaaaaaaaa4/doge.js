@@ -2,7 +2,7 @@
 DOGE.JS V1.1
 Documentation:
 
-
+https://github.com/ch1ck3n-byte/doge.js
 
 Copyright (c) 2020 ch1ck3n (Landon fox)
 
@@ -147,6 +147,9 @@ var doge = {
     
     focusElement : function(id){
         this.getElement(id).focus();
+    },
+    wow : function(){
+        return "wow"
     }
 
 }
