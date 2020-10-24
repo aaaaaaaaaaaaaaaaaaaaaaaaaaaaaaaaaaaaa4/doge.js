@@ -42,7 +42,7 @@ var doge = {
         this.stop = function(){
             this.sound.pause();
         }
-    }
+    },
     once: function(fn, context) { 
         var result;
 
@@ -54,7 +54,7 @@ var doge = {
 
             return result;
         };
-    }
+    },
     getAbsoluteUrl : function() {
         var a;
 
@@ -64,7 +64,7 @@ var doge = {
 
             return a.href;
         };
-    }();
+    }(),
     getElement : function(identifier) {
         return document.querySelector(identifier);
     },
