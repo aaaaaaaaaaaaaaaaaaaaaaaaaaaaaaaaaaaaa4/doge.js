@@ -24,6 +24,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+
 */
 
 var doge = {
@@ -41,6 +43,28 @@ var doge = {
             this.sound.pause();
         }
     }
+    once: function(fn, context) { 
+        var result;
+
+        return function() { 
+            if(fn) {
+                result = fn.apply(context || this, arguments);
+                fn = null;
+            }
+
+            return result;
+        };
+    }
+    getAbsoluteUrl : function() {
+        var a;
+
+        return function(url) {
+            if(!a) a = document.createElement('a');
+            a.href = url;
+
+            return a.href;
+        };
+    }();
     getElement : function(identifier) {
         return document.querySelector(identifier);
     },
