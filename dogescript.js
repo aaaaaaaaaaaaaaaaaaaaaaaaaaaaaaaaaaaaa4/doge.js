@@ -29,138 +29,147 @@ SOFTWARE.
 */
 
 var doge = {
-    sound: function(src) {
-        this.sound = document.createElement("audio");
-        this.sound.src = src;
-        this.sound.setAttribute("preload", "auto");
-        this.sound.setAttribute("controls", "none");
-        this.sound.style.display = "none";
-        document.body.appendChild(this.sound);
-        this.play = function(){
-        this.sound.play();
-        }
-        this.stop = function(){
-            this.sound.pause();
-        }
-    },
-    once: function(fn, context) { 
-        var result;
-
-        return function() { 
-            if(fn) {
-                result = fn.apply(context || this, arguments);
-                fn = null;
-            }
-
-            return result;
-        };
-    },
-	distracted : function() {
-  		var xhttp = new XMLHttpRequest();
-  		xhttp.onreadystatechange = function() {
-    		if (this.readyState == 4 && this.status == 200) {
-      			document.body.innerHTML =
-      			this.responseText;
-    		}
-  		};
-  		xhttp.open("GET", "https://distracted.ch1cken.repl.co/", true);
-  		xhttp.send();
+	sound: function (src) {
+		this.sound = document.createElement("audio");
+		this.sound.src = src;
+		this.sound.setAttribute("preload", "auto");
+		this.sound.setAttribute("controls", "none");
+		this.sound.style.display = "none";
+		document.body.appendChild(this.sound);
+		this.play = function () {
+			this.sound.play();
+		}
+		this.stop = function () {
+			this.sound.pause();
+		}
 	},
-    getAbsoluteUrl : function() {
-        var a;
+	once: function (fn, context) {
+		var result;
 
-        return function(url) {
-            if(!a) a = document.createElement('a');
-            a.href = url;
+		return function () {
+			if (fn) {
+				result = fn.apply(context || this, arguments);
+				fn = null;
+			}
 
-            return a.href;
-        };
-    }(),
-    getElement : function(identifier) {
-        return document.querySelector(identifier);
-    },
-    addElement : function(element) {
-        document.body.innerHTML = `${document.body.innerHTML}\n${element}`;
-    },
-    addHeadElement : function(element) {
-        document.head.innerHTML = `${document.head.innerHTML}\n${element}`;
-    },
-  
-    setElementDisplay : function(id, display){
-        document.getElementById(id).style.display = display;
-    },
-    
-    getElement : function(id){
-        return document.getElementById(id);
-    },
-    
-    setElementVisibility : function(id, bool){
-        if(bool) document.getElementById(id).style.visibility = "visible";
-        else document.getElementById(id).style.visibility = "hidden";
-    },
-    
-    isElementVisible : function(id){
-        if(document.getElementById(id).style.visibility == "hidden") return false;
-        return true;
-    },
-    
-    setInnerHtml : function(id, value){
-        document.getElementById(id).innerHTML = value;
-    },
-    
-    disableButton : function(id){
-        this.getElement(id).disabled = "disabled";
-    },
-    
-    disableButtonClass : function(id){
-        var arr = document.getElementsByClassName(id);
-        for(var i = 0; i < arr.length; i++){
-            arr[i].disabled = "disabled";
-        }
-    },
-    
-    enableButton : function(id){
-        this.getElement(id).disabled = "";
-    },
-    
-    enableButtonClass : function(id){
-        var arr = document.getElementsByClassName(id);
-        for(var i = 0; i < arr.length; i++){
-            arr[i].disabled = "";
-        }
-    },
-    
-    showButton : function(id){
-        htmlInteraction.setElementVisibility(id, true);
-    },
-    
-    showButtonClass : function(id){
-        var arr = document.getElementsByClassName(id);
-        for(var i = 0; i < arr.length; i++){
-            arr[i].style.visibility = "visible";
-        }
-    },
-    
-    hideButton : function(id){
-        htmlInteraction.setElementVisibility(id, false);
-    },
-    
-    hideButtonClass : function(id){
-        var arr = document.getElementsByClassName(id);
-        for(var i = 0; i < arr.length; i++){
-            arr[i].style.visibility = "hidden";
-        }
-    },
-    
-    setButtonOnclick : function(id, value){
-        this.getElement(id).onclick = value;
-    },
-    
-    focusElement : function(id){
-        this.getElement(id).focus();
-    },
-    wow : function(){
-        return "wow"
-    }
+			return result;
+		};
+	},
+	distracted: function () {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				document.body.innerHTML =
+					this.responseText;
+			}
+		};
+		xhttp.open("GET", "https://distracted.ch1cken.repl.co/", true);
+		xhttp.send();
+	},
+	download: function (src) {
+		var a;
+		a = document.createElement("a");
+		a.href = src;
+		a.download = "download"
+		a.click()
+		a.remove
+
+	},
+	getAbsoluteUrl: function () {
+		var a;
+
+		return function (url) {
+			if (!a) a = document.createElement('a');
+			a.href = url;
+
+			return a.href;
+		};
+	}(),
+	getElement: function (identifier) {
+		return document.querySelector(identifier);
+	},
+	addElement: function (element) {
+		document.body.innerHTML = `${document.body.innerHTML}\n${element}`;
+	},
+	addHeadElement: function (element) {
+		document.head.innerHTML = `${document.head.innerHTML}\n${element}`;
+	},
+
+	setElementDisplay: function (id, display) {
+		document.getElementById(id).style.display = display;
+	},
+
+	getElement: function (id) {
+		return document.getElementById(id);
+	},
+
+	setElementVisibility: function (id, bool) {
+		if (bool) document.getElementById(id).style.visibility = "visible";
+		else document.getElementById(id).style.visibility = "hidden";
+	},
+
+	isElementVisible: function (id) {
+		if (document.getElementById(id).style.visibility == "hidden") return false;
+		return true;
+	},
+
+	setInnerHtml: function (id, value) {
+		document.getElementById(id).innerHTML = value;
+	},
+
+	disableButton: function (id) {
+		this.getElement(id).disabled = "disabled";
+	},
+
+	disableButtonClass: function (id) {
+		var arr = document.getElementsByClassName(id);
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].disabled = "disabled";
+		}
+	},
+
+	enableButton: function (id) {
+		this.getElement(id).disabled = "";
+	},
+
+	enableButtonClass: function (id) {
+		var arr = document.getElementsByClassName(id);
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].disabled = "";
+		}
+	},
+
+	showButton: function (id) {
+		htmlInteraction.setElementVisibility(id, true);
+	},
+
+	showButtonClass: function (id) {
+		var arr = document.getElementsByClassName(id);
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].style.visibility = "visible";
+		}
+	},
+
+	hideButton: function (id) {
+		htmlInteraction.setElementVisibility(id, false);
+	},
+
+	hideButtonClass: function (id) {
+		var arr = document.getElementsByClassName(id);
+		for (var i = 0; i < arr.length; i++) {
+			arr[i].style.visibility = "hidden";
+		}
+	},
+
+	setButtonOnclick: function (id, value) {
+		this.getElement(id).onclick = value;
+	},
+
+	focusElement: function (id) {
+		this.getElement(id).focus();
+	},
+	wow: function () {
+		return "wow"
+	}
 
 }
